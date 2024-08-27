@@ -1,4 +1,36 @@
 const products = [
+
+  {
+    id: "id1",
+    image: "images/products/backpack.jpg",
+    name: "LightWeight Bag pack",
+    rating: {
+      stars: 4.5,
+      count: 125
+    },
+    priceCents: 2080,
+    keywords: [
+      "socks",
+      "sports",
+      "apparel"
+    ]
+  },
+  {
+    id: "id2",
+    image: "images/products/umbrella.jpg",
+    name: "Premium Quality Folding Umbrella",
+    rating: {
+      stars: 4,
+      count: 249
+    },
+    priceCents: 2230,
+    keywords: [
+      "socks",
+      "sports",
+      "apparel"
+    ]
+  },
+
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",

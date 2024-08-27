@@ -1,7 +1,9 @@
 .main {
   margin-top: 60px;
 }
-
+.added{
+  opacity: 1;
+}
 .products-grid {
   display: grid;
 
@@ -153,4 +155,7 @@
   width: 100%;
   padding: 8px;
   border-radius: 50px;
+}
+.cart-added{
+  opacity: 1;
 }
