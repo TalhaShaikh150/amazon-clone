@@ -1,5 +1,5 @@
-import {cart} from '../data/cart.js'
-import {products} from '../data/products.js'
+import { cart, addToCart } from '../data/cart.js'
+import { products } from '../data/products.js'
 
 let productsHTML = '';
 products.forEach((product) => {
@@ -52,76 +52,56 @@ products.forEach((product) => {
             Add to Cart
           </button>
         </div>`
-        
-      });
-      
-      document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-      const addedMessageTimeouts = {};
+});
 
-      
-      document.querySelectorAll('.js-add-to-cart')
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-      .forEach((button) => {
-        button.addEventListener('click', () => {
+const addedMessageTimeouts = {};
 
-        const {productId} = button.dataset;
 
-        let matchingItem;
-        
-        /*cart.forEach((item) => {
-          if(productId === item.productId) {
-            matchingItem = item;
-          }
-        });*/
 
-        cart.forEach(item => productId === item.productId && (matchingItem = item));
+function updateCartQuantity(){
+  let cartQuantity = 0;
+      cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity
+      })
 
-        
-        
-        
-        const quantitySelector = document.querySelector
-        (`.js-quantity-selector-${productId}`)
+      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 
-        const quantity = Number(quantitySelector.value)
+      // const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`)
+      // addedMessage.classList.add('cart-added')
+     
+}
 
-        if(matchingItem){
-          matchingItem.quantity += quantity;
-          
+
+document.querySelectorAll('.js-add-to-cart')
+
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+
+      const { productId } = button.dataset;
+
+      addToCart(productId);
+      updateCartQuantity();
+
+    /*  setTimeout(() => {
+        // Check if there's a previous timeout for this
+        // product. If there is, we should stop it.
+        const previousTimeoutId = addedMessageTimeouts[productId];
+        if (previousTimeoutId) {
+          clearTimeout(previousTimeoutId);
         }
-        else{
-          cart.push({
-          productId: productId,
-          quantity:quantity
-          })
-        }
-        let cartQuantity = 0;
-        cart.forEach((item)=>{
-          cartQuantity += item.quantity
-        })
 
-        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+        const timeoutId = setTimeout(() => {
+          addedMessage.classList.remove('cart-added');
+        }, 2000);
 
-        const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`)
-        addedMessage.classList.add('cart-added')
-        
-        setTimeout(() => {
- // Check if there's a previous timeout for this
-      // product. If there is, we should stop it.
-      const previousTimeoutId = addedMessageTimeouts[productId];
-      if (previousTimeoutId) {
-        clearTimeout(previousTimeoutId);
-      }
-
-      const timeoutId = setTimeout(() => {
-        addedMessage.classList.remove('cart-added');
-      }, 2000);
-
-      // Save the timeoutId for this product
-      // so we can stop it later if we need to.
-      addedMessageTimeouts[productId] = timeoutId;
+        // Save the timeoutId for this product
+        // so we can stop it later if we need to.
+        addedMessageTimeouts[productId] = timeoutId;
+      }); */
     });
-  });
 
-      });
+  });
 
