@@ -91,12 +91,24 @@ cart.forEach((cartItem) => {
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      </div>
+      </div>
 
     
   `
 });
+
+updateCartQuantity();
+function updateCartQuantity(){
+
+
+  let cartQuantity = 0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity
+  })
+  
+  document.querySelector('.js-checkout-header').innerHTML = `${cartQuantity} items`;
+}
 
 document.querySelector('.js-order-summary')
 .innerHTML = cartSummaryHTML
@@ -107,6 +119,7 @@ document.querySelectorAll('.js-delete-link')
   link.addEventListener(('click'),() => {
     const productId = link.dataset.productId;
     removefromCart(productId);
+    updateCartQuantity();
 
     const container = document.querySelector(`.js-cart-item-container-${productId}`)
     container.remove();
