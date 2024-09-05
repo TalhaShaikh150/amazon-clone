@@ -14,6 +14,10 @@
   margin-right: auto;
 }
 
+input{
+  width: 30px;
+}
+
 .page-title {
   font-weight: 700;
   font-size: 22px;
@@ -147,8 +151,9 @@
 }
 
 .delivery-option-input {
-  margin-left: 0px;
+  margin-left: -12px;
   cursor: pointer;
+  width: 25px;
 }
 
 .delivery-option-date {
@@ -205,7 +210,33 @@
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 8px;
-
   margin-top: 11px;
   margin-bottom: 15px;
+}
+
+
+.quantity-input {
+  width: 35px;
+  padding: 2px 4px;
+  display: none;
+}
+
+.save-quantity-link {
+  display: none;
+}
+
+.is-editing-quantity .quantity-input {
+  display: initial;
+}
+
+.is-editing-quantity .save-quantity-link {
+  display: initial;
+}
+
+.is-editing-quantity .quantity-label {
+  display: none;
+}
+
+.is-editing-quantity .update-quantity-link {
+  display: none;
 }
