@@ -2,6 +2,7 @@ import {cart,removefromCart,calculateCartQuantity,updateQuantity,updateDeliveryO
 import {products,getProduct} from  '../../data/products.js'
 import { formatCurrency } from '../utils/money.js';
 import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js'
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 
@@ -139,6 +140,7 @@ document.querySelectorAll('.js-delete-link')
 
     const container = document.querySelector(`.js-cart-item-container-${productId}`)
     container.remove();
+    renderPaymentSummary();
   })
 })
 
@@ -203,6 +205,7 @@ function updateCartQuantity(){
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId , deliveryOptionId)
         renderOrderSummarry();
+        renderPaymentSummary();
       })
     })
   }
