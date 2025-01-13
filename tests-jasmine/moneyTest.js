@@ -6,9 +6,9 @@ describe('Test Suite : formatCurrency',() =>{
   });
   it('Works With Zero', () => {
     expect(formatCurrency(0)).toEqual('0.00')
-  })
+  });
   it('Round Up To Nearest Cent',() => {
     expect(formatCurrency(2000.5)).toEqual('20.01')
-  })
+  }); 
 });
 
